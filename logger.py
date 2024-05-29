@@ -130,5 +130,3 @@ def del_data():
 
 
 
-
-del_data()
