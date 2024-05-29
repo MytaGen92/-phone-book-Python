@@ -90,5 +90,45 @@ def edit_data():
                 f.write(i)
                       
             
-            
-        
+def del_data():
+    print(f'в какой фаил вы хотите изменить?\n'
+          f'1 - data_first_variant.csv\n'
+          f'2 - data_second_variant.csv')
+    comands = int(input('введите номер файла\n'))
+    while comands != 1 and comands != 2:
+        print('не верная команда')
+        comands = int(input("Введите команду"))
+    
+    if comands == 1:
+        with open('data_first_variant.csv', 'r',encoding='utf=8') as f:
+            data_first = f.readlines()
+            print("вывожу запись на экран\n")
+            print(''.join(data_first))
+            print('Введите ИМЯ для УДАЛЕНИЯ\n')
+            old_name = old_name_data()  
+            index = data_first.index(old_name)
+            for i, item in enumerate(data_first[index:index+5]):
+                data_first.remove(item)
+            print(''.join(data_first))
+        with open('data_first_variant.csv', 'w',encoding='utf=8') as f:
+            for i in data_first:
+                f.write(i)
+    
+    elif comands == 2:
+        with open('data_second_variant.csv', 'r',encoding='utf=8') as f:
+            data_first = f.readlines()
+            print("вывожу запись на экран\n")
+            print(''.join(data_first))
+            index = int(input('выберите запись для УДАЛЕНИЯ ')) - 1
+            if data_first[index] == '\n':
+                index += 1
+                data_first.pop(index)
+            else:    data_first.pop(index)
+        with open('data_second_variant.csv', 'w',encoding='utf=8') as f:
+            for i in data_first:
+                f.write(i)
+
+
+
+
+del_data()
